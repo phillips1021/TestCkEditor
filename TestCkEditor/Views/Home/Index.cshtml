@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+   /* increase height of ckeditor*/
+    .ck-editor__editable_inline {
+        min-height: 200px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<form asp-controller="Home" asp-action="SaveEmp" method="post">
+    <table>
+        <tr>
+            <td>Name :</td>
+            <td><input name="name" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Description :</td>
+            <td><textarea name="description" id="description"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input id="Submit1" type="submit" value="submit" /></td>
+        </tr>
+    </table>
+</form>
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
+<script>
+        $(document).ready(function () {
+         // ckeditor 5 initialization
+            ClassicEditor
+                .create(document.getElementById('description'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+
+}
